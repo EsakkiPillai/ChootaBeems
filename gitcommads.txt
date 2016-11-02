@@ -1,0 +1,5 @@
+git init ==> To start the git branch
+
+git status ==> To Know the status of the file
+
+git log  ==> gets the history of the  file
