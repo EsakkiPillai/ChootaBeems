@@ -2,13 +2,18 @@ Lesson 1
 
 Lesson 2
   Understand Conditional And Block Experssion 
-            a) if Statemnt And Unit, Data Type- Any , Value of Block 
-            b) While Loop and foreach And For Compression  for(i <- 1 to n ) Works with Any Collection for( c <- 'HELLO') 
+            2.a) if Statemnt And Unit, Data Type- Any , Value of Block 
+            2.b) While Loop and foreach And For Compression  for(i <- 1 to n ) Works with Any Collection for( c <- 'HELLO') 
                 if Statements in For Loop  Collecting Results 
-            c) 
-            d) 
+            2.c) Functions 
+            2.d) 
 Lesson 3
 Lesson 4
 Lesson 5
 Lesson 6
 Lesson 7
+
+
+Functions Wont Operate On Objects ,  def abs(x:Double)= if(x>0) x else -x here return type is infered how is that basically x is double and expressions returns a Double 
+Recursive Function should declare the Return Value Type  
+= equals Sign in Functions
