@@ -1,0 +1,1085 @@
+chmod ugoa to remove the Permission -rwx to add +rwx 
+
+u user g group o others a all 
+
+x is for Execution r is Read w is Write 
+
+-R for recursively call it --> chmod -R a+rX (capital X - only make the 
+
+directory executable )
+
+Compression and Archieving 
+---------------------------
+
+tar - To Archieve the File without Compress it 
+
+tar cf file.tar *.txt *.mp3 ==> tar cf <tar name> <list of Files>
+
+to Extract the File - xf tar xf file.tar 
+
+To View the Files  tar tf file.tar 
+
+To tar and Compress the Files ---> tar czf file.tgz *.mp3
+
+o unzip the tgz files --> gunzip file.tgz 
+
+--> tar xzf file.tgz
+
+
+
+
+=========================================================================
+
+============================================================= 
+Remote Coneection 
+
+telnet  www.google.com Fundamentally Not Secure 
+rsh www.google.com Fundamentally Not Secure  and limited to small 
+
+situations 
+
+
+ssh Machine2 ==> Enter the Password 
+
+
+to Copy the Files across differenet Machines 
+
+scp machine1.txt esak@Machine2:/home/esak/temp
+
+
+
+IO Redirection   cat text.txt > image.txt  to append use >> 
+
+if we give cat and we are not giving any parameters 
+
+it will accept keywords from the keyboard  , to Cancel this out use CTRL 
+
++ D 
+
+--------------------------------------------------------------
+VI Basics
+
+MOvement in File (ESC MODE) 
+
+hjkl 
+w - one word 
+0 - begining of Line 
+
+CTRL+R - Redo 
+dd -  delete the line 
+p - paste  
+yy - Copy to clipboard 
+-------------------------------------------------------------------------
+
+-
+
+
+14 Objects And Methods --- 
+
+> 5 + 6 ==> 5.+(6) 
+res0 = 11   --> Here res0 is the results 
+
+15 Other Types 
+---------------
+
+	Boolean 
+	Char 
+	String - Seq of Characters
+		to Concat the String 
+	Tuples  ("esak" , 29 ,"CTS",'M') 
+		"hi" -> 42  to Create a Tuples ("hi",42)
+		"hi" -> 42 ->"cts" ==> (("hi" ,42) , cts) to get 42 out 
+
+use res._1._2
+to get the values use ._1
+
+
+53.toBinaryString
+
+INT uses 32 bit numbers 
+
+
+------------------------------------------------------------------------
+
+Binary Arithmetic 
+
+------------------------------------------------------------------------
+
+Signed and Negative Values 
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson 1
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+As like a Tradition we used to start with the Hello World Program 
+
+object helloworls{
+	def main (args:Array[String]):unit = {
+		println("Hello World")
+	}
+}
+
+
+main is the Starting Point of the Program . It accepts array[Strings] as Parameters 
+To Compile the Program >> scalac helloworls.scala  it will produce Bunch od .class files 
+to Run the Program >> scala helloworld.scala ---> Hello World 
+
+
+Here Unit is a Data Type whichreturns nothing and it will be equivalent to Void in Java 
+in Scala Methods will begin with "def" Keyword 
+its a practice to keep the object and File Name as of same Name. 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson 2
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Download And Install Intelij in Local Machine 
+Download And instal;l the sbt in Local Machine 
+
+Comments in Scala --> Single Line Comment -> // 
+				  --> Multiple Comments   -> /* */
+	
+	Scala Doc Comments  /** <give Comands in this Place which results in Help >*/
+	always use this Scala Doc Comment bedore the Def Method 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson 3  Variables and Types 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Scala is a Statically  Typed Langugage 
+
+Two types of Variables are available 
+	val  --> Immutable  -- Once defined we cant change the values 
+	var  --> Mutable  -- we can change the Values 
+In Functional Programming we always prefer to usze the "Val" . 
+
+
+val name ="esakki" 
+
+--> 1) Scala will automatically understand the type of the Variable which is "String" , this is called as "Type Inferance" , if we want to explicitly specify 	the variable type use the syntax as follows :- val name :String ="Esakki" 
+--> 2) If we try to reassign the Val values it will thrown an error , it will be equivalent to final in java 
+
+
+val nothing = () 
+--> its value is unit . it carries no information 
+
+String 
+Int
+Double
+Char
+Boolean 
+Float
+Unit
+Tuples  -- we can assign different values and assign to it 
+
+
+val students = ("esak" , 29 ,"CTS",'M')   --> we have created a Tuple named Students 
+Another way of creating the two elment tuples 
+	"hi" -> 42  to Create a Tuples ("hi",42)
+	
+we cant generate three or more element tuples by using the above methods 
+	"hi" -> 42 ->"cts" ==> (("hi" ,42) , cts) to get 42 out 
+
+To retrieve the Elements from the Tuples 
+To take First Element from the Tuple -- > 
+val res = ("esakki",27) -> res._1  tuples are one based , not 0 based as of Array 
+use res._1._2
+to get the values use ._1
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson 4 String Interpolation 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+val message  = "Welcome to " +lang + "Programming and u are using the"+ver+ "Version"
+val message = s"Welcome to $lang Programming and u are using the $ver Version"    --> $lang give the Values 
+
+if we want to Do some Operations then we use like   --> To Use This we have to use the {} Operators 
+val message = s"Welcome to $lang Programming and u are using the ${ver._2} Version" 
+
+if we want to use the only two decimal after the point we havve to f and %.2f 
+
+scala> val str = s"Item Price : $itemPrice%.2f"
+str: String = Item Price : 10.5%.2f
+ 
+scala> val str = f"Item Price : $itemPrice%.2f"
+str: String = Item Price : 10.50
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------Lesson 5 Statement and Expressions 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Everything is Expression in Scala . Expression will produce an Value and it will associate with any type.
+
+InLine Format  
+
+Rule :- if a method call has only one parameter we can rewrite the method call as below  
+
+	--> Scala Everything is methods , so if we want to add Two Varaibales 1 + 2 
+	--> Scala Compilier  will understand it as 1.+(2) ==> we are calling the "+" method on the object 1 and passing the variable 2 to it 
+	--> Like Wise value.min(value2) so as per the above rule we can rewrite as value1 min value2 
+
+
+Rule 2 : - equality Check "==" 
+
+name == "esakki" // results in True   we dont need to call the .equals Method 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson 6 Lamda Expression 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+"=>" Rocket operator 
+
+RULE :-  if the parameter is coming only one tome then we can use the _ in th a place of the varaibles 
+
+In scala there will some times we need to write Functions without assigning a name to it and these functions as called as ';anonymouns Function"
+
+val square =  (x:Double ) => x*x      // if we declare val square = x => x*x scala will be unhappy and it couldnt figure the type 
+square(23) 
+
+we can rewrite the above function as 
+
+val square : Double => Double = x => x*x  
+
+we cant rewrite as Below 
+val square : Double => Double = _ * _  --> scala will consider the above line as x times y , it will never look for x times x , so we have to use this notation when we need to replace a value for only one time 
+ 
+val twice :Double => Double = _ *2
+
+Write a Function for Lesser than 
+
+val lt = (Double,Double) => Boolean = (x,y) => x < y 
+val lt = (Double,Double) => Boolean = _ < _ 
+
+both above methoda are same 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson 7 if and While Loop 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ No Prefix and Post Fix operator in scal awe have to use the i = + 1 
+ 
+print elements from 1 to 10 
+
+var i =0 
+while(i < 10) {
+	println(i)
+	i += 1
+}
+
+Do while -- we never use in scala ^_^
+var i =0 
+ do{
+	println(i)
+	i += 1
+}while(i < 10)
+
+Tradition if else 
+if(age <18){
+	println("no acess")
+}
+else{
+	println("Come on in")
+}
+
+But in scala we 
+
+val results = if(age <18){ "no acess" } else {"Come on in"}   
+
+	In Scala if is Expression and it will return a value 
+Both If and else branch should be of same type otherwise we end in the data type called "Any" which we should avoid 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson 8  For Comprehenssion 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+for loop will accept only sequence . it will be equivalent of foreach loop in java 
+
+print elements from 0 to 10 
+		for(i <- 0 to 10) { print(i) }
+
+we only want num,ber diivde by 3 and 5 
+	for(i <- 0 until 10 ; if i %3 ==0 || i%5 == 0) {println(i)}
+	
+	
+we can use the curly breaces to get rid of the semicolon 
+
+for{
+i <- 0  until 10 
+if i%3 ==0 || i %5 == 0
+sqr = i*i
+j <- 'a' to 'c'
+} {
+	println(i)
+}
+
+use for as an expression 
+
+val stuff  = for{
+i <- 0  until 10 
+if i%3 ==0 || i %5 == 0
+sqr = i*i
+j <- 'a' to 'c'
+} yield {
+	i->j
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson 9 Match Expression  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+pattern Matching is very powerful in scala 
+
+def getAge(age:Int) = age match{
+case 1 => println('one')
+case 2 => println('two')
+case 7 => println('seven')
+case _ => println("Nothing")
+}
+ _ means if nothing matches it will be prineted like a default statement in Java 
+ 
+ the same above if else cabn be rewritten as below {find numbers which all divided by 3 and 5 }
+ val fizbuzz = for(i <- 1 until 10 ) yield {
+	(i%3 ,i%5) match {
+		case (0,0) => "fizbuzz"
+		case (0,_) => "fiz"
+		case (_,0) => "buz"
+		case _ => "NA"
+		}
+ }
+
+ 
+ YTBD
+ 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson 10  TRY CATCH  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+exceptional Handling is used to handle the abnormal Conditions. we can avoid the unwanted termination of Program .
+
+All Exceptions are "unchecked Exception" in Scala .
+
+	val s = "123" // its fine 
+	val snum = s.toInt
+	
+	val s ="123a"
+	val snum = s.toInt  //will results in numberFormatException 
+	
+so we are handling this Exception 
+	
+	val s  = "123a"
+	try{
+	val snum = s.toInt
+	 }catch {
+		case e:numberFormatException => println("We are Getting Number Format Exception" + e.printtrace)
+		}
+		
+		
+	// Dont Use println in the Catch block this entire Try Catch will return Any , Since in try we are returning int and in Catch we are Returning String 		so 	Scala will use Any as the data Type , Again whichis not useful , So please avoid it .
+	
+Rule :- if we wnat to handle Any type of Exception we have to Use "Throwable"  class which is a Super class in exception hierarchy 
+
+Just like Java we are havingh the Finally Block in Scala , Mostly we used to close the Opened File or the Db Connection Activity 
+
+
+Throw KeyWord 
+
+	--> Scala Allow us to throw some Custom Exception using the Throw Keyword 
+			if(age < 18) { throw new Airthmetic Exception("You are Not Elligible to vote") }
+			
+	--> Scala Provides Throw keyword to declare exception , You can declare exception with the method definition . It provide this Method will throwe this Exception so user can use try and catch block in the caller method 
+	
+	class excExample4{
+	@throws(classOf[NumberFormatException])
+	def validate():Unit ={a/b}
+	}
+	
+	object Runner{ 
+	
+		def main(args:Array[String])= { 
+	
+	try{
+		e.validate
+		}catch{
+		case e :AirthemeticException => 0
+		case e2:NumberFormatexception => 1
+		case e3:Throweable => 3
+	}
+	}}
+	
+We can Create Our Own Custom Exception as Below 
+
+class esakException (s:String) extend Exception(s){}
+class ExceptionExample{  
+    @throws(classOf[InvalidAgeException])  
+    def validate(age:Int){  if(age<18){  
+            throw new InvalidAgeException("Not eligible")  
+        }
+	Object Runner extend App {
+	 var e = new ExceptionExample()  
+        try{  
+            e.validate(5)  
+        }catch{  
+            case e : Exception => println("Exception Occured : "+e)  
+        }  
+	}
+
+	
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson 11  Declarations And Scope 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Scope in scala are defined by Curly Braces 
+
+??? = Method in Scala which means Nothing 
+
+Libraries And Standard Input 
+
+libraries are also scope limited 
+
+import scala.io.srdIn._
+val lines = readLine()
+val age = readInt()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson 12  Arrays And List Collections
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Array(1,2,3,4,5) // res0: Array[Int] =Array(1,2,3,4,5)
+List('a','v','b') // res1"List[Char] =List('a','v','b')
+
+mutability   --> Array is mutable , List is immutable
+
+val arr = Array(1,2,3,4,5)  
+	1) I cant Assign a new Array object to Val 
+	2) I can change the available Array Object , since Array is mutable i can change the values  arr(2) = 99 
+	3) 
+
+
+List --> res1(3) = 'x' // error : value update is not a member of List[Char]
+
+	1)if the values are Growing we can go for List , adding the values at the front of the list is highly efficient 
+
+Methods 
+--------
+
+1) fill - is a currying Method 
+
+	arr.fill(100)(3) 			===> Array(3,3,3...)
+	list.fill(100)(math.random) ===> List(1,1.2,5)
+	
+	val names = list.fill(5)(io.stdIn.readLine)  ==> we can input 5 lines from keyboard and it it will form a lIst out of it 
+	
+2) tabulate(no of elements )( what to do with the index )
+		ASRR.tabulate(3)( i => i+10) ===> Array(10,11,12)
+
+Please refer the Below Section for the Collection  methods and its usuages 
+
+1) Filtering Methods 
+
+2) Transformation and Reduction Methods 
+
+3) Sorting Methods 
+	
+4) Grouping Methods
+
+5) Inforamtion And Mathematical Methods 
+		
+
+6) Others 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson  13 Range 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.to(10) will Produce a Range   ==> Scala.Colelction.immutable.Range.Inclusive = Range(1,2,3,4,5,6...)
+
+1 to 10 by 2 ===> Range(1,3,5,7,9)
+
+
+for Double Range we are not sure ware going to increase by 1 it may be increased by .01 as well so we have to define the by as always 
+
+1.0 to 10.0 by 0.1 
+
+10.0 to 1.0 by -0.1
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson  14  Options 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Option is a List of elements of 0 and 1 elements 
+
+When it comes to functional programming in Scala, Option is much preferable than null since it is type-safe and plays nice with other constructs in the functional paradigm.
+ 
+So, instead of null, use Option whenever it's possible that a function or method can return "no value", or when it's logically valid for a member variable to have "no value".
+
+To Handle the Null in scala we use Option Data type 
+
+if there is any value it will return as Some(i) if it contains null it will return as None 
+
+Proper way to handle the Null 
+
+val a = Array(1,2,3,4,5)
+a.find(_ >10) ==> returns None 
+
+a.find(_< 2) ==> Some(1)
+
+use getOrElse() method to access a value or a default when no value is present.
+ println("a.getOrElse(0): " + a.getOrElse(0) )   // when the value is Null it will return 0 
+ 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson  15  Case Class 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Important Concept of using case class is to ease the development by avoiding lot of boilier plate code .
+
+Benefit 1:- 
+
+--> Scala compilier adds a factory method with the name of the class with the same no of parameters defined in the class definition , because of this we dont need to use the new keyword 
+
+--> Scala compilier prefixes val to all the constructor parameters , thats why case class parameters became class members,
+--> so by default case class members are "VAL" so we cant assign any values to them.So there will be no getters method  we can access the values using getters Method , 
+--> scala compilier will add toString hashcode equals copy method automatically 
+-->scala compilier also adds the unapply and apply method so that y we dont need new keyword
+--> By default case class are serializable , it also extends product trait 
+
+--> case class dont extend another "case class" , case class extends another class or Abstract Class
+
+scala compilier adds lot of bolier code for us so that the byte code file size is bit higher .
+
+after the scala 2.11.1 we can have more than 22 case class parameters , previously which we cant use this 
+
+
+case class students(name:String,empId:Int)
+
+val s1 = students("esakki",101)
+val s2 = students("sankar",102)
+
+check the scala case class with the below commands javap students$
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson  16  Reading From External Sources 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Text File 
+-----------
+
+import scala.io.StdIn._
+import scala.io.Source
+we can read the User Input from the Keyboard 
+
+println("enter the filename")
+val fileName = readLine()
+
+val source = Source.fromFile("fileName") 
+val srcFiles = source.getLines
+val matrix = srcFiles.map(_.split(" ").map(_.toDouble)).toArray()
+source.close
+ 
+
+To Write Back to the File 
+
+import Java.io.PrintWriter
+val pc = new PrintWriter("fileName")
+matrix.foreach(line => pw.prinltn(line.sum))
+pc.close
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson   17 Named And Default Arguments 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Named Arguments -  Named parameters means when making a Function call or Constructor Call , We use name of the parameter (arguments or variable) explicitly 
+Constructor-Name(Parameter1-Name = Value1,  Parameter2-Name = Value2).
+
+if we use Name Parameters, then we don’t need to worry about Parameters order. Even though, We make a call with different order, still we will get same results as shown below.
+
+case class Employee (EmpId:Int , EmpFName:String , EmpLName:String) {
+def concat(delim:String) = EmpFName + delim +EmpLName
+ }
+ 
+ val e1 =  Employee(1002,EmpLName="T",EmpFName="esakki")
+ e.delim("-")  //esakki-T
+ 
+* It avoids Client confusion in passing Parameters to Method or Constructor calls.
+* It improve the readability of the code.
+
+Default Arguments :- 
+
+case class Employee (EmpId:Int , EmpFName:String , EmpLName:String) {
+def concat(delim:String = "#") = EmpFName + delim +EmpLName
+ }
+
+
+As per the Function , if we dont give the parameter it will use the Default Parameter(# in this case ) as shown Below 
+ val e1 =  Employee(1002,EmpLName="T",EmpFName="esakki")
+ e.delim("-")  //esakki-T
+ e.delim()  //esakki#T 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson  18 Object Orientation 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Analysis  		- Problem we are going to Solve what will user do at the End 
+Design 	  		- Higher Level Code , like Classes Methods , Data , 
+Implementation 	- Write Code 
+Testing 		- Check it Works 
+Maintenance
+ 
+ 
+UML Bank  use case Diagram 
+
+Customer opens the Account 
+Customer closes the account 
+Customer deposit money
+Customer withdraw the money 
+Customer changes the Address 
+
+Bank			_customer:List[Customer] _accounts:List[Account]				openAccount closeAccount 
+Customer		firstName:tring lastName:String id:String _accounts _address 	addAccount removeAccount accountList changeAddress	
+Account			_balance:Int _customer:Customer customerId:String 				balance deposit withdrawl 
+Address			address															verify
+
+BankMain SingletonObject  																		main 
+
+Bank Implementation 					
+
+com.oobasics.bank
+	>Bank
+	>Customer
+	>Account
+	>Address
+	>BankRuner
+	
+	
+class Account(val customer :customer, val accountId:String){
+
+	private var _balance:Int = 0
+	
+	Customer.addAccount(this)   // Whwn ever we create an Account this line will make sure the account has been added to the Customer AS Well 
+	def balance = _balance 
+	
+	def deposit(amt:Int):Boolean ={
+		if (amt < 0) false 
+		else {_balance += amt true}
+	}
+	
+	def deposit(amt:Int):Boolean ={
+		if ( amt < 0 || amt > _balance ) false 
+		else {_balance -= amt true}
+	}
+
+	
+}
+
+class Customer (
+	val firstname:String
+	val lastname:String
+	val CustomerId:String
+	private var _address:Address
+){
+
+		private var _accounts:List[Account] = Nil
+		
+		def address = _address
+		def account = _account 
+		
+		def addAccount(account:Account):Unit ={ _accounts ::= account }
+		
+		def removeAccount(customerID:String):Boolean ={ 
+			val index = _account.indexWhere(_.id == customerID )
+			if(index < 0) false
+			else { accounts = _accounts.patch(index,Nil,0) true}
+		}
+		
+		
+		
+		def changeAddress(a:Address):Unit = {_address = a}
+		
+}
+
+class Bank(
+private var _customer:List[Customer] = Nil
+private var _accounts:List[Account] = Nil
+private var nexCustomerNo = 0 
+private var nexAcctNo = 0 
+
+){
+
+
+def addCutomer(fname:String,lName:String,address:String):Account = {  nexCustomerNo += 7 ; _customer = new Customer(fname,lName,nexCustomerNo.toString,address) }
+
+def openAccount(c:Customer) = {
+nexAcctNo += 101
+val accounts = new Account(c,nexAcctNo.toString)
+_accounts ::= accounts 
+accounts 
+}
+
+def closeAccount(a:Account):Boolean = {
+if(_accounts.contains(a)) { _accounts = _accounts.filter(rec => !rec.equals(a) if(!a.customer.removeAccount(a.id)){ print("Account want part of Customer")
+} 
+true ) 
+} else false 
+
+}
+
+def findCustomer(fname:String,Lname:String):Option[Customer] ={ _customer.find( c => c.firstname==fname && c.lastName == lName)}
+}
+
+
+def findCustomer(custid:String):Option[Customer] ={ _customer.find( c => c.CustomerId==custid )}
+}
+
+def findAccount(aid:String):Option[Customer] ={ _accounts.find( c => c.Id==aid )}
+}
+
+}
+
+
+object bankRunner exyends App {
+	var option = 0 
+	val bank = new Bank
+	val customer:Option[Customer] = None
+	val acount:Option[Account] = None
+	while(option! =10){
+		option = readInt() option match {
+			case 1 => customer = some(createCustomer(bank))
+			case 2 => customer = selectCustomer(bank)
+			}
+	}
+	
+	private def createCustomer (bank :bank):Customer = {
+		println("Enter the Customer FirstName")
+		var fname = readLine()
+		println("Enter the Customer LastName")
+		var lname = readLine()
+		println("Enter the Customer Address")
+		var address = readAddress()
+		bank.addCutomer(fname,lname,address)
+	}
+	
+	def readAddress():Address = {
+		???
+		}
+		
+	private def selectCustomer(bank:bank):Option[Customer] = {
+			println("Do u want to find the Cusomer by id or Name")
+			val option = readLine 
+			if (option == "name"){
+				println("Enter the Customer FirstName")
+				var fname = readLine()
+				println("Enter the Customer LastName")
+				var lname = readLine()
+				bank.findCustomer(fname,lname)
+		
+			}else {
+				println("Enter the Customer FirstName")
+				val id = readLine()
+				bank.findCustomer(id)
+				}
+		}
+}
+
+
+
+
+Implement the Same in Intellij Using var and Try to implement using Only Val 
+
+implment a Logic For Pizza Shop 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson  19  OO Details 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Create a Scala Class named Vector2D and Accepts Two Double values as Parameters and do the + - * Double  Operation .
+
+Do the Above in Both Mutuable as well as Imutable Ways 
+
+
+Scala Naming / Symbolic Names :- 
+
+we can use + - 8 / \ < ? ! $ & as method Names de abd !@# def 1@#$ are valid 
+
+INFIX Notation :- if a method accepts only one parameter value then we can use it without dot and paranthesis like below 
+
+v1.plus(v2) can be rewritten as  v1 plus v2 
+
+Precedence :-   
+
+Operator has some precedence  rule . 
+			* /%
+			+ - 
+			: 
+			= !
+			< > 
+			& 
+			all letters 
+			assignment Operators 
+
+
+Associtivity and Unary Operators :- 
+
+In scala  if any operator ends in : its right operative 
+
+	1 :: 2 :: 3 :: Nill ==>  its Right Associative ==> nill is First value 1 is the Second Value 2 is the Third Value 
+			we can rewrite it as  Nill.::(3).::(2).::(1)
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson   Currying and PassBy-Name 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Normal Add Method in scala 
+
+def add(x:Int,y:Int):Int = { x+y }  
+
+In Currying Way we can rewrite it as 
+
+	def add(x:Int)(y:Int):Int = x+ y 
+	
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Lesson   Methods in Collection 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+1) Filtering Methods 
+		1) distinct     ==> def distinct:List[A]  Builds a new sequence from this sequence without any duplicate elements.
+		2) drop
+		3) dropRight
+		4) dropWhile
+		5)filter
+		6)filterNot
+		7)head
+		8) headOption
+		9)init
+		10)last
+		11)lastOption
+		12)tail
+		13)slice
+		14)take 
+		15)takeRight
+		16)takeWhile
+		17)toSet
+		18)withFilter
+2) Transformation and Reduction Methods 
+		1)+
+		2)++
+		3)-
+		4)--
+		5)collect
+		6)diff
+		7)flatMap
+		8)Map
+		9)reverse
+		10)sortWith
+		11)takeWhile
+		12)zip
+		13)zipWithIndex
+		14)foldLeft
+		15)reduceLeft
+
+3) Sorting Methods 
+		1)sortBy
+		2)sortWith
+		3)sorted
+		
+4) Grouping Methods
+		1)groupBy
+		2)grouped
+		3)partition 
+		4)sliding
+		5)sparn
+		6)splitAt
+		7)unZip
+5) Inforamtion And Mathematical Methods 
+		1)canEqual 
+		2)canEqual
+		3)contains
+		4)containsSlice
+		5)count
+		6)endsWith
+		7)exists
+		8)find
+		9)forAll
+		10)hasDefiniteSize
+		11)indexOf
+		12)indexOfSlice
+		13)indexWhere
+		14)isDefinedAt
+		15)isEmpty
+		16)lastIndexOf
+		17)lastIndexOfSlice
+		18)lastIndexWhere
+		19)max
+		20)min
+		21)nonEmpty
+		22)product
+		23)segmentLength
+		24)size
+		25)startsWith
+		26)sum
+
+6) Others 
+		1)flatten 
+		2)foreach 
+		3)mkString
+		4)par 
+		5)view
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Hatsun Argo 
+Dabur India 
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
